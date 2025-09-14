@@ -1,103 +1,127 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Image from "next/image";
+import heroBanner from "@/assets/images/Herobanner.jpg";
+import Link from "next/link";
+import Stairs from "@/components/common/Stairs";
+
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const introText = "Banu Prakash".split("");
+  const descriptionText =
+    "A passionate photographer capturing timeless moments with creativity and depth.".split(
+      ""
+  );
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  return (
+    <main className="relative h-screen w-screen">
+      {/* Background Image */}
+      <Stairs/>
+      <Image
+        src={heroBanner}
+        alt="Hero background"
+        fill
+        className="object-cover object-top-10 brightness-75"
+        priority
+      />
+
+      {/* Overlay Content */}
+      <div className="absolute inset-0 flex flex-col justify-between text-center text-[#e1ca96]">
+        {/* Intro Section */}
+        <div className="flex flex-col items-center justify-center flex-grow px-4">
+          {/* Name */}
+          <motion.h1
+            className="text-5xl md:text-7xl font-bold tracking-wide flex flex-wrap justify-center"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {},
+              visible: {
+                transition: { staggerChildren: 0.08 },
+              },
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            {introText.map((char, i) => (
+              <motion.span
+                key={i}
+                className="inline-block"
+                variants={{
+                  hidden: { opacity: 0, y: -80, rotateX: 90 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    rotateX: 0,
+                    transition: {
+                      type: "spring",
+                      stiffness: 150,
+                      damping: 12,
+                    },
+                  },
+                }}
+              >
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            ))}
+          </motion.h1>
+
+          {/* Description */}
+          <motion.p
+            className="mt-6 text-lg md:text-2xl max-w-3xl flex flex-wrap justify-center"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {},
+              visible: {
+                transition: { delayChildren: 1.5, staggerChildren: 0.03 },
+              },
+            }}
           >
-            Read our docs
-          </a>
+            {descriptionText.map((char, i) => (
+              <motion.span
+                key={i}
+                className="inline-block"
+                variants={{
+                  hidden: { opacity: 0, y: -60, rotateX: 90 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    rotateX: 0,
+                    transition: {
+                      type: "spring",
+                      stiffness: 120,
+                      damping: 14,
+                    },
+                  },
+                }}
+              >
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            ))}
+          </motion.p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+
+        {/* Buttons Section */}
+        <motion.div
+          className="flex justify-center gap-6 pb-12"
+          initial={{ opacity: 0, y: 60, scale: 0.8 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ delay: 3, type: "spring", stiffness: 100, damping: 12 }}
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          <Link
+            href="/projects"
+            className="px-12 py-6 bg-transparent border-2 hover:border-[#10b981] hover:text-[#10b981] uppercase border-[#e1ca96] backdrop-blur-xs text-[#e1ca96] rounded-full text-2xl font-medium shadow-lg hover:scale-105 transition"
+          >
+            Projects
+          </Link>
+          <Link
+            href="/contact"
+            className="px-12 py-6 bg-transparent border-2 uppercase hover:border-[#10b981] hover:text-[#10b981] border-[#e1ca96] backdrop-blur-xs text-[#e1ca96] rounded-full text-2xl font-medium shadow-lg hover:scale-105 transition"
+          >
+            Contact
+          </Link>
+        </motion.div>
+      </div>
+    </main>
   );
 }
