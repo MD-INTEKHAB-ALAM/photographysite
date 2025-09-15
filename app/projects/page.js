@@ -5,7 +5,24 @@ import { useGSAP } from '@gsap/react';
 import React from 'react'
 import gsap from 'gsap';
 import { ScrollTrigger } from "gsap/ScrollTrigger"; // 👈 import ScrollTrigger
-function page() {
+function Page() {
+  gsap.registerPlugin(ScrollTrigger);
+  
+  useGSAP(function() {
+    gsap.from(".hero", {
+      height:0,
+      stagger:{
+        amount:0.5
+      },
+      scrollTrigger:{
+        trigger:".lol",
+        markers:true,
+        start:'top 100%',
+        end:'top -150%',
+        scrub:true,
+      }
+    })
+  })
   const projects = [
   {
     img1: "https://k72.ca/uploads/caseStudies/PJC/Thumbnails/PJC_SiteK72_Thumbnail_1280x960-1280x960.jpg",
@@ -41,29 +58,12 @@ function page() {
   },
 ];
 
-gsap.registerPlugin(ScrollTrigger);
-
-useGSAP(function() {
-  gsap.from(".hero", {
-    height:0,
-    stagger:{
-      amount:0.5
-    },
-    scrollTrigger:{
-      trigger:".lol",
-      markers:true,
-      start:'top 100%',
-      end:'top -150%',
-      scrub:true,
-    }
-  })
-})
   return (
     <>
       <Stairs color="#000000"/>
       <div className="p-4 mb-[10px]">
         <div className="pt-[45vh]">
-          <h2 className="font-sans text-[9.5vw] uppercase text-black">Work's</h2>
+          <h2 className="font-sans text-[9.5vw] uppercase text-black">Work &apos;s</h2>
         </div>
         <div className="-mt-20">
           {projects.map((elm,idx)=> (
@@ -77,4 +77,4 @@ useGSAP(function() {
   )
 }
 
-export default page; 
+export default Page; 
