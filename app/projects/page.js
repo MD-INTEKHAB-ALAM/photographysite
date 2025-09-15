@@ -65,7 +65,7 @@ function Page() {
         <div className="pt-[45vh]">
           <h2 className="font-sans text-[9.5vw] uppercase text-black">Work &apos;s</h2>
         </div>
-        <div className="-mt-20">
+        <div className="mt-10">
           {projects.map((elm,idx)=> (
             <div key={idx+1} className="hero w-full h-[500px] mb-4 flex gap-4">
               <ProjectCard key={idx} image1={elm.img1} image2={elm.img2}/>
