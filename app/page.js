@@ -10,14 +10,12 @@ import Stairs from "@/components/common/Stairs";
 export default function Home() {
   const introText = "Banu Prakash".split("");
   const descriptionText =
-    "A passionate photographer capturing timeless moments with creativity and depth.".split(
-      ""
-  );
+    "A passionate photographer capturing timeless moments with creativity and depth.".split("");
 
   return (
     <main className="relative h-screen w-screen">
       {/* Background Image */}
-      <Stairs/>
+      <Stairs color="#e1ca96"/>
       <Image
         src={heroBanner}
         alt="Hero background"
@@ -105,7 +103,7 @@ export default function Home() {
         <motion.div
           className="flex justify-center gap-6 pb-12"
           initial={{ opacity: 0, y: 60, scale: 0.8 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
+          animate={{ opacity: 1, y: 0, scale: 1 } }
           transition={{ delay: 3, type: "spring", stiffness: 100, damping: 12 }}
         >
           <Link

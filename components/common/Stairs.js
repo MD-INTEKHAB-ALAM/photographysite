@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import gsap from "gsap";
 import { usePathname } from "next/navigation";
 
-function Stairs() {
+function Stairs({color}) {
     const stairParentRef = useRef(null);
     const pathname = usePathname();
     console.log(pathname);
@@ -40,12 +40,12 @@ function Stairs() {
   return (
         <div ref={stairParentRef} className="h-screen w-full fixed z-20 top-0">
         <div className="h-screen w-full flex fixed z-20 top-0">
-          <div className="stair h-full w-1/6 bg-[#e1ca96] "></div>
-          <div className="stair h-full w-1/6 bg-[#e1ca96] "></div>
-          <div className="stair h-full w-1/6 bg-[#e1ca96] "></div>
-          <div className="stair h-full w-1/6 bg-[#e1ca96] "></div>
-          <div className="stair h-full w-1/6 bg-[#e1ca96] "></div>
-          <div className="stair h-full w-1/6 bg-[#e1ca96] "></div>
+          <div className="stair h-full w-1/6" style={{ backgroundColor: color }}></div>
+          <div className="stair h-full w-1/6" style={{ backgroundColor: color }}></div>
+          <div className="stair h-full w-1/6" style={{ backgroundColor: color }}></div>
+          <div className="stair h-full w-1/6" style={{ backgroundColor: color }}></div>
+          <div className="stair h-full w-1/6" style={{ backgroundColor: color }}></div>
+          <div className="stair h-full w-1/6" style={{ backgroundColor: color }}></div>
         </div>
       </div>
   )
